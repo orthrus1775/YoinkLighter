@@ -28,6 +28,7 @@ type FlagOptions struct {
 	password  string
 	real      string
 	verify    string
+    take  string
 }
 
 var (
@@ -53,6 +54,7 @@ func VarNumberLength(min, max int) string {
 	r = RandStringBytes(n)
 	return r
 }
+
 func RandStringBytes(n int) string {
 	b := make([]byte, n)
 	for i := range b {
@@ -185,18 +187,37 @@ func Check(check string) {
 	}
 }
 
+func ResourceTake(source string, destination string) {
+    
+    srcRes0 := yoinkfuncs.LoadAllResourcesFromPath(source)
+	ico := yoinkfuncs.SearchForCommonICOGroups(srcRes0)
+    
+    rawfiRes := yoinkfuncs.GetSpecRawResTypeData(srcRes0, 0x10) //Grab File Information Resource
+    vi := yoinkfuncs.GetRawVersionInfo(rawfiRes)
+	jdata := yoinkfuncs.GetVersionInfoAsJSON(vi)
+    ogfvi := yoinkfuncs.GetSrcFileVersionData(jdata)
+	newfvi := yoinkfuncs.RequestNewFileInfoForm(ogfvi)
+    yoinkfuncs.SetDstFileInfoData(vi, newfvi)
+	
+    srcRes0.SetIcon(yoinkfuncs.WINICON, ico)
+	srcRes0.SetVersionInfo(*vi)
+	yoinkfuncs.PerformResPatch(*srcRes0, destination)
+
+}
+
 func options() *FlagOptions {
 	outFile := flag.String("O", "", "Signed file name")
-	inputFile := flag.String("I", "", "Unsiged file name to be signed")
+	inputFile := flag.String("I", "", "Unsigned file name to be signed")
+	take := flag.String("TakeFile", "", "Take the icon and file info from this file")
 	domain := flag.String("Domain", "", "Domain you want to create a fake code sign for")
 	password := flag.String("Password", "", "Password for real certificate")
-	real := flag.String("Real", "", "Path to a valid .pfx certificate file")
+    real := flag.String("Real", "", "Path to a valid .pfx certificate file")
 	verify := flag.String("Verify", "", "Verifies a file's code sign certificate")
 	debug := flag.Bool("debug", false, "Print debug statements")
 	flag.Parse()
 	debugging = *debug
 	debugWriter = os.Stdout
-	return &FlagOptions{outFile: *outFile, inputFile: *inputFile, domain: *domain, password: *password, real: *real, verify: *verify}
+	return &FlagOptions{outFile: *outFile, inputFile: *inputFile, take: *take,domain: *domain, password: *password, real: *real, verify: *verify}
 }
 
 func main() {
@@ -230,11 +251,14 @@ _____.___.      .__        __   .____    .__       .__     __
 		Check(opt.verify)
 		os.Exit(3)
 	}
-
 	if opt.real != "" {
 		fmt.Println("[*] Signing " + opt.inputFile + " with a valid cert " + opt.real)
 		SignExecutable(opt.password, opt.real, opt.inputFile, opt.outFile)
-
+    }
+	if opt.take != "" {
+		fmt.Println("[*] Taking icon and file info from " + opt.take + " for target " + opt.inputFile)
+        ResourceTake(opt.take, opt.inputFile)
+		SignExecutable(opt.password, opt.real, opt.inputFile, opt.outFile)
 	} else {
 		password := VarNumberLength(8, 12)
 		pfx := opt.domain + ".pfx"
