@@ -23,8 +23,6 @@ The first step as always is to clone the repo. Before you compile YoinkLighter y
 go get github.com/savsanta/yoinkfuncs
 go get github.com/fatih/color
 go get github.com/charmbracelet/huh
-
-
 ```
 
 Then build it
@@ -58,7 +56,7 @@ Usage of ./YoinkLighter:
         Unsigned file name to be signed
   -O string
         Signed file name
-  -Take string
+  -Yoink string
         Path to an existing EXE/DLL to yoink (take) ICON and file info from
   -Password string
         Password for real certificate
