@@ -1,6 +1,10 @@
 
 # YoinkLighter
-![Yoink](Screenshots/YoinkCity.gif)
+<p align="center">
+  <img src="Screenshots/YoinkCity.gif" alt="Description of image">
+</p>
+
+
 A tool to create spoof code signing certificates in order to sign binaries and DLL files to aid in the intention to evade EDR products and minimize SOC scrutiny. 
 YoinkLighter can also be used with legitimate code signing certificates to sign files. 
 YoinkLighter can use a fully qualified domain name such as `acme.com`.
