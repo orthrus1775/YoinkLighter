@@ -1,10 +1,10 @@
 
 # YoinkLighter
-
+![Yoink](Screenshots/YoinkCity.gif)
 A tool to create spoof code signing certificates in order to sign binaries and DLL files to aid in the intention to evade EDR products and minimize SOC scrutiny. 
-YoinkLighter can also use valid code signing certificates to sign files. 
+YoinkLighter can also be used with legitimate code signing certificates to sign files. 
 YoinkLighter can use a fully qualified domain name such as `acme.com`.
-Additionally, YoinkLighter allows supports the ability to pilfer existing certificates from other binaries and embed icons.
+Additionally, YoinkLighter allows supports the ability to yoink (take) embedded icons, file information, and certificates from an existing file.
 
 ## Contributing
 YoinkLighter is a fork of the @Tylous LimeLighter GoLang project.
