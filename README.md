@@ -11,8 +11,7 @@ Additionally, YoinkLighter allows supports the ability to yoink (take) embedded 
 
 ## Contributing
 YoinkLighter is a fork of the @Tylous LimeLighter GoLang project.
-The intention was to utilize pure GoLang in order to perform portable executable (PE) manipulations. Whilst in theory th
-Make sure that the following are installed on your OS 
+The intention was to utilize pure GoLang in order to perform PE (Portable Executable) manipulations. Whilst in theory the yoinkfuncs can utilize the wrapped libraries to yoink a certificate it currently isnt implemented and thusly we still use the native LimeLighter implementation so until then ensure that the following are installed on your OS 
 
 ```
 openssl
