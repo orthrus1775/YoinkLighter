@@ -56,10 +56,10 @@ Usage of ./YoinkLighter:
         Unsigned file name to be signed
   -O string
         Signed file name
-  -S string
-        Path to an existing EXE to steal resources from
+  -Take string
+        Path to an existing EXE/DLL to yoink (take) ICON and file info from
   -Password string
-        Password for real  certificate
+        Password for real certificate
   -Real string
         Path to a valid .pfx certificate file
   -Verify string

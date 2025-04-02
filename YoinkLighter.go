@@ -208,7 +208,7 @@ func ResourceTake(source string, destination string) {
 func options() *FlagOptions {
 	outFile := flag.String("O", "", "Signed file name")
 	inputFile := flag.String("I", "", "Unsigned file name to be signed")
-	take := flag.String("TakeFile", "", "Take the icon and file info from this file")
+	take := flag.String("TakeFile", "", "Path to an existing EXE/DLL to yoink (take) ICON and file info from")
 	domain := flag.String("Domain", "", "Domain you want to create a fake code sign for")
 	password := flag.String("Password", "", "Password for real certificate")
     real := flag.String("Real", "", "Path to a valid .pfx certificate file")
