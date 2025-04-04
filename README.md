@@ -50,20 +50,30 @@ _____.___.      .__        __   .____    .__       .__     __
 
 [*] A Tool for Code Signing... Real or Fake
 Usage of ./YoinkLighter:
+  -C string
+        Select a mode to apply the certificate. [STEAL, PFXSIGN, or NONE] (default "NONE")
+  -Certmode string
+        Select a mode to apply the certificate. [STEAL, PFXSIGN, or NONE] (default "NONE")
   -Domain string
-        Domain you want to create a fake code sign for
+        Domain to use when creating a fake code sign
   -I string
-        Unsigned file name to be signed
+        Input filename to be signing.
+  -Input string
+        Input filename to be used for signing.
   -O string
-        Signed file name
-  -Yoink string
-        Path to an existing EXE/DLL to yoink (take) ICON and file info from
+        Output target to apply the signing to
+  -Output string
+        Output target to apply the signing to
   -Password string
         Password for real certificate
   -Real string
         Path to a valid .pfx certificate file
   -Verify string
         Verifies a file's code sign certificate
+  -Y string
+        Existing EXE/DLL file to yoink (take) ICON and file info from.
+  -Yoink string
+        Existing EXE/DLL file to yoink (take) ICON and file info from.
   -debug
         Print debug statements
 
