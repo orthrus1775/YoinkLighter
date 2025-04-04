@@ -79,14 +79,23 @@ Usage of ./YoinkLighter:
 
 ```
 
+### Signing a file using a generated cert
 To sign a file you can use the command option `Domain` to generate a fake code signing certificate.
 
 ![Signing](Screenshots/Signing.png)
 
 to sign a file with a valid code signing certificate use the `Real` and `Password` to sign a file with a valid code signing certificate.
 
-
+### Verifying a signed file
 To verify a signed file use the `verify` command.
 
 ![Verifying](Screenshots/Verifing.png)
 ![WindowsVerifying](Screenshots/WindowsVerifying.png)
+
+
+### Yoinking an Icon and FileInfo Metadata Example Syntax
+`./yoinklighter-linux-amd64 -Certmode STEAL -I mssetup.exe -Y mssetup.exe -O MyMalwareLoader.exe -Domain NotBenign.com`
+
+`.\yoinklighter-windows-amd64.exe -Certmode STEAL -I mssetup.exe -Y mssetup.exe -O MyMalwareLoader.exe -Domain NotBenign.com`
+
+##
