@@ -29,6 +29,7 @@ type FlagOptions struct {
 	real      string
 	verify    string
     take  string
+	certmode string
 }
 
 var (
