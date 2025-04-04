@@ -207,18 +207,23 @@ func ResourceTake(source string, destination string) {
 }
 
 func options() *FlagOptions {
-	outFile := flag.String("O", "", "Signed file name")
-	inputFile := flag.String("I", "", "Unsigned file name to be signed")
-	take := flag.String("Yoink", "", "Path to an existing EXE/DLL to yoink (take) ICON and file info from")
-	domain := flag.String("Domain", "", "Domain you want to create a fake code sign for")
+	certmode := flag.String("Certmode", "NONE", "Select a mode to apply the certificate. [STEAL, PFXSIGN, or NONE]")
+	flag.StringVar(certmode, "C", *certmode, "Select a mode to apply the certificate. [STEAL, PFXSIGN, or NONE]") // short form for Certmode
+	take := flag.String("Yoink", "", "Existing EXE/DLL file to yoink (take) ICON and file info from.")
+	flag.StringVar(take, "Y", *take, "Existing EXE/DLL file to yoink (take) ICON and file info from.") // short form for Yoink
+	outFile := flag.String("O", "", "Output target to apply the signing to")
+	flag.String("Output", "", "Output target to apply the signing to")
+	inputFile := flag.String("I", "", "Input filename to be signing.")
+	flag.String("Input", "", "Input filename to be used for signing.")
+	domain := flag.String("Domain", "", "Domain to use when creating a fake code sign")
 	password := flag.String("Password", "", "Password for real certificate")
-    real := flag.String("Real", "", "Path to a valid .pfx certificate file")
+	real := flag.String("Real", "", "Path to a valid .pfx certificate file")
 	verify := flag.String("Verify", "", "Verifies a file's code sign certificate")
 	debug := flag.Bool("debug", false, "Print debug statements")
 	flag.Parse()
 	debugging = *debug
 	debugWriter = os.Stdout
-	return &FlagOptions{outFile: *outFile, inputFile: *inputFile, take: *take,domain: *domain, password: *password, real: *real, verify: *verify}
+	return &FlagOptions{outFile: *outFile, inputFile: *inputFile, take: *take, certmode: *certmode, domain: *domain, password: *password, real: *real, verify: *verify}
 }
 
 func main() {
