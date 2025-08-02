@@ -9,9 +9,11 @@ YoinkLighter can also be used with legitimate code signing certificates to sign 
 YoinkLighter can use a fully qualified domain name such as `acme.com`.
 Additionally, YoinkLighter allows supports the ability to yoink (take) embedded icons, file information, and certificates from an existing file.
 
-## Contributing
 YoinkLighter is a fork of the @Tylous LimeLighter GoLang project.
-The intention was to utilize pure GoLang in order to perform PE (Portable Executable) manipulations. Whilst in theory the yoinkfuncs can utilize the wrapped libraries to yoink a certificate it currently isnt implemented and thusly we still use the native LimeLighter implementation so until then ensure that the following are installed on your OS 
+The intent was in addition to it's innate orgiginal functions utilize pure GoLang to perform additional Portable Executable (PE) manipulations. 
+
+## Installation
+Make sure that the following are installed on your OS 
 
 ```
 openssl
@@ -20,9 +22,10 @@ osslsigncode
 
 The first step as always is to clone the repo. Before you compile YoinkLighter you'll need to install the dependencies. To install them, run following commands:
 ```
-go get github.com/SavSanta/yoinkfuncs
+go get github.com/savsanta/yoinkfuncs
 go get github.com/fatih/color
 go get github.com/charmbracelet/huh
+
 ```
 
 Then build it
