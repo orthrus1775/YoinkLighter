@@ -18,7 +18,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/SavSanta/yoinkfuncs"
+	"github.com/orthrus1775/yoinkfuncs"
 	"github.com/fatih/color"
 )
 

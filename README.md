@@ -22,7 +22,7 @@ osslsigncode
 
 The first step as always is to clone the repo. Before you compile YoinkLighter you'll need to install the dependencies. To install them, run following commands:
 ```
-go get github.com/savsanta/yoinkfuncs
+go get github.com/orthrus1775/yoinkfuncs
 go get github.com/fatih/color
 go get github.com/charmbracelet/huh
 
